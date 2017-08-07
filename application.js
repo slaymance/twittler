@@ -15,11 +15,14 @@ $(document).ready(function(){
 
   setInterval(function() {
     if (streams.home.length > tweetCount) {
-      var tweet = streams.home[streams.home.length - 1];
-      var $tweet = $('<div style="display: none;"></div>');
-      $tweet.text('@' + tweet.user + ': ' + tweet.message);
-      $tweet.prependTo($body).show(300);
-      tweetCount += 1;
+
+      while(tweetCount < streams.home.length) {
+        var tweet = streams.home[tweetCount];
+        var $tweet = $('<div style="display: none;"></div>');
+        $tweet.text('@' + tweet.user + ': ' + tweet.message);
+        $tweet.prependTo($body).show(300);
+        tweetCount += 1;
+      }
     }
-  }, 5000)
+  }, 1000)
 });
