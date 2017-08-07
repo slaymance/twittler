@@ -8,7 +8,7 @@ $(document).ready(function(){
   while(index >= 0){
     var tweet = streams.home[index];
     var $tweet = $('<div></div>');
-    $tweet.text('@' + tweet.user + ': ' + tweet.message  + ' | created at ' + 
+    $tweet.text('@' + tweet.user + ': ' + tweet.message  + ' | created on ' + 
                 tweet.created_at);
     $tweet.appendTo($body);
     index -= 1;
@@ -20,7 +20,7 @@ $(document).ready(function(){
       while(tweetCount < streams.home.length) {
         var tweet = streams.home[tweetCount];
         var $tweet = $('<div style="display: none;"></div>');
-        $tweet.text('@' + tweet.user + ': ' + tweet.message + ' | created at ' 
+        $tweet.text('@' + tweet.user + ': ' + tweet.message + ' | created on ' 
                     + tweet.created_at);
         $tweet.prependTo($body).show(300);
         tweetCount += 1;
