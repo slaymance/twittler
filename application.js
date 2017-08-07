@@ -18,7 +18,7 @@ $(document).ready(function(){
       var tweet = streams.home[streams.home.length - 1];
       var $tweet = $('<div style="display: none;"></div>');
       $tweet.text('@' + tweet.user + ': ' + tweet.message);
-      $tweet.prependTo($body).show('slow');
+      $tweet.prependTo($body).show(300);
       tweetCount += 1;
     }
   }, 5000)
