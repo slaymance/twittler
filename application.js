@@ -4,13 +4,17 @@ $(document).ready(function(){
 
   var tweetCount = streams.home.length;
 
+  function prependTweet(index) {
+    var tweet = streams.home[index];
+    var $tweet = $('<div style="display: none;"></div>');
+    $tweet.text('@' + tweet.user + ': ' + tweet.message + ' | created on ' 
+                + tweet.created_at);
+    $tweet.prependTo($body).show(300);
+  };
+
   var index = streams.home.length - 1;
   while(index >= 0){
-    var tweet = streams.home[index];
-    var $tweet = $('<div></div>');
-    $tweet.text('@' + tweet.user + ': ' + tweet.message  + ' | created on ' + 
-                tweet.created_at);
-    $tweet.appendTo($body);
+    prependTweet(index);
     index -= 1;
   }
 
@@ -18,11 +22,7 @@ $(document).ready(function(){
     if (streams.home.length > tweetCount) {
 
       while(tweetCount < streams.home.length) {
-        var tweet = streams.home[tweetCount];
-        var $tweet = $('<div style="display: none;"></div>');
-        $tweet.text('@' + tweet.user + ': ' + tweet.message + ' | created on ' 
-                    + tweet.created_at);
-        $tweet.prependTo($body).show(300);
+        prependTweet(tweetCount);
         tweetCount += 1;
       }
     }
