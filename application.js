@@ -1,6 +1,6 @@
 $(document).ready(function(){
-  var $body = $('body');
-  $body.html('');
+  var $main = $('main').find('.feed');
+  $main.html('');
 
   var tweetCount = 0;
 
@@ -9,7 +9,7 @@ $(document).ready(function(){
     var $tweet = $('<div style="display: none;"></div>');
     $tweet.text('@' + tweet.user + ': ' + tweet.message + ' | created on ' 
                 + tweet.created_at);
-    $tweet.prependTo($body).show(300);
+    $tweet.prependTo($main).show(300);
   };
 
   (function getNewTweets() {
