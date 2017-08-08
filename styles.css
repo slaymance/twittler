@@ -30,6 +30,7 @@ body
     border-color: #aeaeae;
     box-shadow: 2px 2px 2px gray;
     margin-bottom: 5px;
+    cursor: pointer; cursor: hand;
 }
 
 /* styles for navbar */
