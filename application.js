@@ -1,22 +1,32 @@
 $(document).ready(function(){
-  var $main = $('main').find('.feed');
-  $main.html('');
 
   var tweetCount = 0;
 
-  function prependTweet(index) {
+  function addTweet(index) {
     var tweet = streams.home[index];
-    var $tweet = $('<div style="display: none;"></div>');
+    var $tweet = $('<div class="tweet" style="display: none;"></div>');
     $tweet.text('@' + tweet.user + ': ' + tweet.message + ' | created on ' 
                 + tweet.created_at);
-    $tweet.prependTo($main).show(300);
+    $tweet.insertAfter($('.tracker')).show(300);
   };
 
   (function getNewTweets() {
     while(tweetCount < streams.home.length) {
-      prependTweet(tweetCount);
+      addTweet(tweetCount);
       tweetCount += 1;
     }
-    setTimeout(getNewTweets, 1000);
+
+    $('main').on('click', '.tracker', function() {
+      $('.tracker').hide('fast');
+      getNewTweets();
+    });
+  })();
+
+  (function trackNewTweets() {
+    if(tweetCount < streams.home.length) {
+      $('.tracker').text(`View ${streams.home.length - tweetCount} new Twittles`);
+      $('.tracker').show('fast');
+    }
+    setTimeout(trackNewTweets, 1000);
   })();
 });
