@@ -13,8 +13,41 @@ body
 .tweet
 {
     background-color: #ffffff;
-    margin-bottom: 7px;
+    margin-bottom: 15px;
     box-shadow: 2px 2px 2px gray;
+}
+
+.tweetHeader
+{
+    padding-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.tweetUser
+{
+    color: #0645AD;
+    font-weight: bold;
+    cursor: pointer; cursor: hand;
+}
+
+.divider
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.tweetTimestamp
+{
+    color: #7e7e7e;
+    font-style: italic;
+}
+
+.tweetMessage
+{
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 5px;
 }
 
 .tracker
