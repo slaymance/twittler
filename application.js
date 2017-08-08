@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   var tweetCount = 0;
+  var tweetsFiltered = false;
 
   function addTweet(index) {
     var tweet = streams.home[index];
@@ -21,27 +22,21 @@ $(document).ready(function(){
     $tweet.show(300);
   };
 
-  (function getNewTweets() {
+  function getNewTweets() {
     while(tweetCount < streams.home.length) {
       addTweet(tweetCount);
       tweetCount += 1;
     }
+  };
 
-    $('main').on('click', '.tracker', function() {
-      $('.tracker').hide('fast');
-      getNewTweets();
-    });
-  })();
-
-  (function trackNewTweets() {
-    if(tweetCount < streams.home.length) {
-      $('.tracker').text(`View ${streams.home.length - tweetCount} new Twittles`);
+  function trackNewTweets() {
+    if(tweetCount < streams.home.length && !tweetsFiltered) {
+      $('.tracker').text(`View ${streams.home.length - tweetCount} new Ramblings`);
       $('.tracker').show('fast');
     }
-    setTimeout(trackNewTweets, 1000);
-  })();
+  };
 
-  (function updateTimestamp() {
+  function updateTimestamp() {
     var tweetTimestamps = document.getElementsByClassName('tweetTimestamp');
 
     for(var i = 0; i < tweetTimestamps.length; i++) {
@@ -50,12 +45,22 @@ $(document).ready(function(){
 
       $currentSpan.text($.timeago(timestamp));
     }
-    setTimeout(updateTimestamp, 60000);
-  })();
+  };
 
-  $('main').on('click', '.tweetUser', function() {
+  $('main').on('click', '.tracker', function() {
+    $('.tracker').hide('fast');
+    getNewTweets();
+  });
+
+  $('main').on('click', '.tweetUser', function(event) {
+    event.preventDefault();
+    tweetsFiltered = !tweetsFiltered;
+    $('.tracker').hide('slow');
+
     var clickedUser = $(this).data('user');
     var tweetUsers = document.getElementsByClassName('tweetUser');
+
+    $('.userFeed').text('@' + clickedUser + '\'s Ramblings').toggle('slow');
 
     for(var i = 0; i < tweetUsers.length; i++) {
       var $currentSpan = $(tweetUsers[i]);
@@ -67,20 +72,7 @@ $(document).ready(function(){
     }
   });
 
-  /*(function filterUsers() {
-    $('main').on('click', '.tweetUser', function() {
-
-      var clickedUser = $(this).data('user');
-      var tweetUsers = document.getElementsByClassName('tweetUser');
-
-      for(var i = 0; i < tweetUsers.length; i++) {
-        var $currentSpan = $(tweetUsers[i]);
-        var currentUser = $currentSpan.data('user');
-        if(currentUser !== clickedUser) {
-          $currentSpan.closest('.tweet').toggle('slow');
-        }
-      }
-      filterUsers();
-    });
-  })();*/
+  getNewTweets();
+  setInterval(trackNewTweets, 1000);
+  setInterval(updateTimestamp, 60000);
 });
