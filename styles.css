@@ -1,0 +1,39 @@
+.container
+{
+    /* center contents */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+/* styles for navbar */
+.navbar-default .navbar-brand .maroon
+{
+    color: #8B0000;
+    font-family: arial;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px gray;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+main td
+{
+    /* left-align tables' cells */
+    text-align: left;
+}
