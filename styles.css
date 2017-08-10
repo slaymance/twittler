@@ -19,13 +19,12 @@ body
 .typeTweet
 {
     margin-top: 3.5px;
-    margin-left: -15px;
 }
 
 .submitBtn
 {
     margin-top: 3.5px;
-    margin-right: -20px;
+    margin-right: -15px;
 }
 
 .tweet
