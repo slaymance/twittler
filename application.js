@@ -5,13 +5,13 @@ $(document).ready(function(){
 
   function addTweet(index) {
     var tweet = streams.home[index];
-    var $tweet = $('<div class="tweet" style="display: none;"></div>');
+    var $tweet = $('<div class="tweet panel" style="display: none;"></div>');
     var $tweetHeader = $('<div class="tweetHeader"><span class="tweetUser"></span><span class="divider"></span><span class="tweetTimestamp"></span></div>');
     var $tweetMessage = $('<div class="tweetMessage"></span>');
 
     $tweetHeader.find('.tweetUser').text('@' + tweet.user);
     $tweetHeader.find('.tweetUser').attr('data-user', tweet.user);
-    $tweetHeader.find('.divider').text(' | ');
+    $tweetHeader.find('.divider').text('');
     $tweetHeader.find('.tweetTimestamp').attr('data-timestamp', tweet.created_at);
     $tweetHeader.find('.tweetTimestamp').text($.timeago(tweet.created_at));
     $tweetMessage.text(tweet.message);
@@ -31,7 +31,7 @@ $(document).ready(function(){
 
   function trackNewTweets() {
     if(tweetCount < streams.home.length && !tweetsFiltered) {
-      $('.tracker').text(`View ${streams.home.length - tweetCount} new Ramblings`);
+      $('.tracker').find('.badge').text(`${streams.home.length - tweetCount}`);
       $('.tracker').show('fast');
     }
   };
@@ -50,6 +50,11 @@ $(document).ready(function(){
   $('main').on('click', '.tracker', function() {
     $('.tracker').hide('fast');
     getNewTweets();
+  });
+
+  $('main').on('mouseover mouseout', '.tweetUser', function(event) {
+    event.preventDefault();
+    $(this).toggleClass('text-primary', 'text-primary');
   });
 
   $('main').on('click', '.tweetUser', function(event) {
