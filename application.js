@@ -11,7 +11,7 @@ $(document).ready(function(){
     var tweet = streams.home[index];
     var $tweet = $('<div class="tweet panel" style="display: none;"></div>');
     var $tweetHeader = $('<div class="tweetHeader"><span class="tweetUser"></span><span class="divider"></span><span class="tweetTimestamp"></span></div>');
-    var $tweetMessage = $('<div class="tweetMessage"></span>');
+    var $tweetMessage = $('<div class="tweetMessage"></div>');
 
     $tweetHeader.find('.tweetUser').text('@' + tweet.user);
     $tweetHeader.find('.tweetUser').attr('data-user', tweet.user);
