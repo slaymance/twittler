@@ -21,12 +21,12 @@ $(document).ready(function(){
     $tweet.insertAfter($('.tracker'));
     $tweetHeader.appendTo($tweet);
     $tweetMessage.insertAfter($tweetHeader);
-    $tweet.show(300);
   };
 
   function getNewTweets() {
     while(tweetCount < streams.home.length) {
       addTweet(tweetCount);
+      $('.tweet').show(300);
       tweetCount += 1;
     }
   };
@@ -77,6 +77,7 @@ $(document).ready(function(){
     event.preventDefault();
     tweetsFiltered = !tweetsFiltered;
     $('.tracker').hide('slow');
+    $('.createTweet').toggle('slow');
 
     var clickedUser = $(this).data('user');
     var tweetUsers = document.getElementsByClassName('tweetUser');
