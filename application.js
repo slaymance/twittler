@@ -39,7 +39,7 @@ $(document).ready(function(){
   };
 
   function updateTimestamp() {
-    var tweetTimestamps = document.getElementsByClassName('tweetTimestamp');
+    var tweetTimestamps = $('.tweetTimestamp');
 
     for(var i = 0; i < tweetTimestamps.length; i++) {
       var $currentSpan = $(tweetTimestamps[i]);
@@ -58,6 +58,7 @@ $(document).ready(function(){
       writeTweet(message);
       getNewTweets();
       $('.typeTweet').val('');
+      $('.tracker').hide('fast');
     }
   };
   // Listens for viewing new tweets
@@ -80,7 +81,7 @@ $(document).ready(function(){
     $('.createTweet').toggle('slow');
 
     var clickedUser = $(this).data('user');
-    var tweetUsers = document.getElementsByClassName('tweetUser');
+    var tweetUsers = $('.tweetUser');
 
     $('.userFeed').text('@' + clickedUser + '\'s Ramblings').toggle('slow');
 
@@ -92,6 +93,18 @@ $(document).ready(function(){
         $currentSpan.closest('.tweet').toggle('slow');
       }
     }
+
+    setInterval(function() {
+      if(tweetsFiltered) {
+        while(tweetCount < streams.home.length) {
+          addTweet(tweetCount);
+          if (clickedUser === $('.tweetUser').first().data('user')) {
+            $('.tweet').first().show(300);
+          }
+          tweetCount += 1;
+        }
+      }
+    }, 6000);
   });
 
   // Listens for tweet submission
