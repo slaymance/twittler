@@ -39,12 +39,25 @@
   <main>
     
     <div class="container">
-      <div class="trending col-lg-3"></div>
-      <div class="feed col-lg-6">
-        <div class="userFeed" style="display: none;"></div>
-        <div class="tracker" style="display: none;"></div>
+      <div class="row">
+        <div class="trending col-md-3"></div>
+        <div class="feed col-md-6">
+          <div class="createTweet form-inline media panel panel-heading">
+            <div class="media-left media-middle col-md-2">
+              <img src="images/beerUser.png" class="media-object img-circle" style="width:40px">
+            </div>
+            <div class="input-group col-md-10">
+              <input class="form-control typeTweet" id="inputdefault" type="text" placeholder="Ramble into the Void">
+              <div class="input-group-btn">
+                <button type="submit" class="submitBtn btn btn-default btn-sm"><img src="images/vomit.png" style="width:20px"></button>
+              </div>
+            </div>
+          </div>
+          <div class="userFeed panel panel-default panel-heading h2" style="display: none;"></div>
+          <div class="tracker panel h4" style="display: none;">View New Ramblings<span class="badge"></span></div>
+        </div>
+        <div class="following col-md-3"></div>
       </div>
-      <div class="following col-lg-3"></div>
     </div>
 
   </main>
