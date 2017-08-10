@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  window.visitor = 'beerdrinker';
+
   var tweetCount = 0;
   var tweetsFiltered = false;
 
@@ -47,6 +49,18 @@ $(document).ready(function(){
     }
   };
 
+  function tweetSubmit() {
+    var message = $('.typeTweet').val();
+    if (message === '') {
+      alert('Say something or go home, you\'re drunk!');
+    } else {
+      streams.users[visitor] = [];
+      writeTweet(message);
+      getNewTweets();
+      $('.typeTweet').val('');
+    }
+  };
+
   $('main').on('click', '.tracker', function() {
     $('.tracker').hide('fast');
     getNewTweets();
@@ -74,6 +88,17 @@ $(document).ready(function(){
       if(currentUser !== clickedUser) {
         $currentSpan.closest('.tweet').toggle('slow');
       }
+    }
+  });
+
+  // Allow user to write tweets
+  $('main').on('click', '.submitBtn', function() {
+    tweetSubmit();
+  });
+
+  $('main').on('keypress', '.typeTweet', function(element) {
+    if (element.keyCode === 13) {
+      tweetSubmit();
     }
   });
 
