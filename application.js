@@ -5,6 +5,7 @@ $(document).ready(function(){
   var tweetCount = 0;
   var tweetsFiltered = false;
   var tweetsSubmitted = 0;
+  var clickedUser;
 
   function addTweet(index) {
     var tweet = streams.home[index];
@@ -83,8 +84,13 @@ $(document).ready(function(){
     $('.tracker').hide('slow');
     $('.createTweet').toggle('slow');
 
-    var clickedUser = $(this).data('user');
     var tweetUsers = $('.tweetUser');
+
+    if (tweetsFiltered) {
+      clickedUser = $(this).data('user');
+    } else {
+      clickedUser;
+    }
 
     $('.userFeed').text('@' + clickedUser + '\'s Ramblings').toggle('slow');
 
