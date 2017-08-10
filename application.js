@@ -60,17 +60,19 @@ $(document).ready(function(){
       $('.typeTweet').val('');
     }
   };
-
+  // Listens for viewing new tweets
   $('main').on('click', '.tracker', function() {
     $('.tracker').hide('fast');
     getNewTweets();
   });
 
+  // Listens for hover over username
   $('main').on('mouseover mouseout', '.tweetUser', function(event) {
     event.preventDefault();
     $(this).toggleClass('text-primary', 'text-primary');
   });
 
+  // Listens for filtering by user
   $('main').on('click', '.tweetUser', function(event) {
     event.preventDefault();
     tweetsFiltered = !tweetsFiltered;
@@ -91,7 +93,7 @@ $(document).ready(function(){
     }
   });
 
-  // Allow user to write tweets
+  // Listens for tweet submission
   $('main').on('click', '.submitBtn', function() {
     tweetSubmit();
   });
