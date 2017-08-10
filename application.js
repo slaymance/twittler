@@ -4,6 +4,7 @@ $(document).ready(function(){
 
   var tweetCount = 0;
   var tweetsFiltered = false;
+  var tweetsSubmitted = 0;
 
   function addTweet(index) {
     var tweet = streams.home[index];
@@ -50,6 +51,7 @@ $(document).ready(function(){
   };
 
   function tweetSubmit() {
+    tweetsSubmitted += 1;
     var message = $('.typeTweet').val();
     if (message === '') {
       alert('Say something or go home, you\'re drunk!');
@@ -59,6 +61,7 @@ $(document).ready(function(){
       getNewTweets();
       $('.typeTweet').val('');
       $('.tracker').hide('fast');
+      $('.tweetsBadge').text(tweetsSubmitted);
     }
   };
   // Listens for viewing new tweets
