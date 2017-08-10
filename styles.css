@@ -11,6 +11,35 @@
     margin-right: 20px;
 }
 
+.profileImg
+{
+    display: inline-block;
+}
+
+.profileUser
+{
+    display: inline-block;
+    margin-left: 15px;
+    text-shadow: 1px 1px 2px gray;
+}
+
+.profileStats
+{
+    color: #ab4e4e;
+    margin-bottom: 4px;
+}
+
+.statsBadge
+{
+    float: none;
+    margin: 0 auto;
+}
+
+.img-circle
+{
+    border: 2px solid #e5e5e5;
+}
+
 body
 {
     background-image: url("images/background.jpg");
@@ -18,8 +47,8 @@ body
 
 .createTweet
 {
-    background-color: #ffe9e9;
-    box-shadow: 0 0 3px 2px #ffe9e9;
+    background-color: #d8abab;
+    box-shadow: 0 0 3px 2px #d8abab;
 }
 
 .typeTweet
